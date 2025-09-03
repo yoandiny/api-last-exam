@@ -10,10 +10,21 @@ paths:
     get:
       responses:
         '200':
-        description: Endpoint retournant pong
-        content:
+          description: Endpoint returning pong
+          content:
           text/plain:
             type: string
             example: pong
+
+  /cars:
+    get:
+      responses:
+        '200':
+          description: Endpoint returning the actual car list
+            content:
+            application/json:
+              type: array
+              example: [{}]
+
         
   
