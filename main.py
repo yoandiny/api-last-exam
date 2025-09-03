@@ -33,5 +33,13 @@ async def addCar(car: carModel):
 async def getCarList():
     return carList
     
+@app.get("/cars/{id}")
+async def getCarById(id: str):
+    for car in carList:
+        if(car.identifier == id):
+            return car
+    
+    return JSONResponse(content={"error": "Couldn't find any phone with this id"}, status_code=404)
+
     
         
