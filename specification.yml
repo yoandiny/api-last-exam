@@ -1,0 +1,19 @@
+openapi: 3.0.8
+info:
+  title: STD24005
+  description: This is a specification of STD24005
+  version: 1.0.0
+servers:
+  - url: localhost:8000
+paths:
+  /ping:
+    get:
+      responses:
+        '200':
+        description: Endpoint retournant pong
+        content:
+          text/plain:
+            type: string
+            example: pong
+        
+  
