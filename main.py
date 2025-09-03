@@ -17,7 +17,8 @@ class carModel(BaseModel):
 
 @app.get("/ping")
 async def ping():
-    return "pong !"
+    response = "pong"
+    return response
 
 carList = []
 
@@ -40,6 +41,17 @@ async def getCarById(id: str):
             return car
     
     return JSONResponse(content={"error": "Couldn't find any phone with this id"}, status_code=404)
+
+@app.put("/cars/{id}/characteristics")
+async def modifyCarChar(id: str, characteristics: Characteristics):
+    for car in carList:
+        if(car.identifier == id):
+            car.characteristics.max_speed = characteristics.max_speed
+            car.characteristics.max_fuel_capacity = characteristics.max_fuel_capacity
+
+            return car
+    
+    return JSONResponse(content={"error": "Couldn't find any car with this id"}, status_code=404)
 
     
         
